@@ -8,13 +8,15 @@ import "./profile.css";
 export default function ProfilePage() {
 
   const [message, setMessage] = useState("");
-  const [data, setData] = useState("");
+  const [data, setData] = useState({});
 
   useEffect(() => {
 
     const Profile = async () => {
 
+      // Get access token first
       let token = localStorage.getItem("access_token");
+
       const refreshToken = localStorage.getItem("refresh_token");
 
       if (!token) {
@@ -66,6 +68,7 @@ export default function ProfilePage() {
           localStorage.removeItem("refresh_token");
 
           setMessage("Session expired. Please login again");
+
           return;
         }
 
@@ -93,7 +96,7 @@ export default function ProfilePage() {
 
       if (response.ok) {
 
-        console.log("Ok");
+        console.log("Profile data:", responseData);
 
         setData(responseData);
 
@@ -135,7 +138,6 @@ export default function ProfilePage() {
 
       </div>
     );
-
   }
 
 
@@ -145,10 +147,14 @@ export default function ProfilePage() {
 
       <div className="profile-card">
 
+        {/* Profile Header */}
+
         <div className="profile-header">
 
           <div className="profile-avatar">
+
             {data.username?.charAt(0).toUpperCase()}
+
           </div>
 
           <h1>{data.username}</h1>
@@ -157,6 +163,8 @@ export default function ProfilePage() {
 
         </div>
 
+
+        {/* Profile Information */}
 
         <div className="profile-info">
 
@@ -195,11 +203,69 @@ export default function ProfilePage() {
         </div>
 
 
+        {/* My Posts */}
+
+        <div className="my-posts">
+
+          <h2>My Posts</h2>
+
+          {data.blogs?.length === 0 ? (
+
+            <p>You have not created any posts yet.</p>
+
+          ) : (
+
+            <div className="my-post-grid">
+
+              {data.blogs?.map((post) => (
+
+                <article
+                  key={post.blog_id}
+                  className="my-post-card"
+                >
+
+                  <img
+                    src={`http://127.0.0.1:8000/files/${post.content}`}
+                    alt={post.title}
+                  />
+
+                  <div className="my-post-content">
+
+                    <h3>
+                      {post.title}
+                    </h3>
+
+                    <p>
+                      {post.description}
+                    </p>
+
+                    <small>
+                      {new Date(
+                        post.create_at
+                      ).toLocaleDateString()}
+                    </small>
+
+                  </div>
+
+                </article>
+
+              ))}
+
+            </div>
+
+          )}
+
+        </div>
+
+
+        {/* Logout */}
+
         <button
           className="logout-button"
           onClick={() => {
 
             localStorage.removeItem("access_token");
+
             localStorage.removeItem("refresh_token");
 
             window.location.href = "/login";
@@ -212,7 +278,5 @@ export default function ProfilePage() {
       </div>
 
     </div>
-
   );
-
 }
