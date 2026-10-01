@@ -1,0 +1,354 @@
+
+/* =========================
+   BLOG PAGE
+========================= */
+
+.blog-page {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  padding: 30px 0;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.blog-header {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.blog-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.blog-header p {
+  color: #aaa;
+  font-size: 15px;
+}
+
+
+/* =========================
+   BLOG GRID
+========================= */
+
+.blog-grid {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+
+/* =========================
+   BLOG CARD
+========================= */
+
+.blog-card {
+  position: relative;
+
+  width: 100%;
+  min-height: 700px;
+
+  background: #111;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  border: 1px solid #222;
+}
+
+
+/* =========================
+   BLOG IMAGE
+========================= */
+
+.blog-image-container {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.blog-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+/* =========================
+   DARK OVERLAY
+========================= */
+
+.blog-image-container::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.1)
+  );
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.blog-category {
+  position: absolute;
+
+  top: 20px;
+  left: 20px;
+
+  z-index: 2;
+
+  background: #fe2c55;
+
+  color: white;
+
+  padding: 7px 14px;
+
+  border-radius: 5px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   BLOG CONTENT
+========================= */
+
+.blog-content {
+  position: absolute;
+
+  z-index: 3;
+
+  left: 20px;
+  right: 75px;
+  bottom: 25px;
+}
+
+
+/* =========================
+   AUTHOR
+========================= */
+
+.blog-author {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 15px;
+}
+
+.author-image {
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 2px solid white;
+}
+
+.blog-author h4 {
+  margin: 0;
+
+  font-size: 15px;
+
+  color: white;
+}
+
+.blog-author p {
+  margin: 3px 0 0;
+
+  font-size: 12px;
+
+  color: #ccc;
+}
+
+
+/* =========================
+   BLOG TITLE
+========================= */
+
+.blog-title {
+  margin: 0 0 10px;
+
+  font-size: 25px;
+
+  line-height: 1.3;
+
+  color: white;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.blog-description {
+  margin: 0 0 12px;
+
+  color: #ddd;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 3;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   DATE / READ TIME
+========================= */
+
+.blog-info {
+  display: flex;
+
+  gap: 12px;
+
+  color: #bbb;
+
+  font-size: 12px;
+
+  margin-bottom: 12px;
+}
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+.blog-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.blog-stats {
+  display: flex;
+
+  gap: 15px;
+
+  color: white;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   READ MORE
+========================= */
+
+.read-more {
+  border: none;
+
+  background: #fe2c55;
+
+  color: white;
+
+  padding: 9px 15px;
+
+  border-radius: 5px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.read-more:hover {
+  background: #e51f48;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .blog-page {
+    padding: 0;
+  }
+
+  .blog-header {
+    padding: 25px 15px;
+  }
+
+  .blog-header h1 {
+    font-size: 28px;
+  }
+
+  .blog-grid {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .blog-card {
+    min-height: 650px;
+
+    border-radius: 0;
+
+    border-left: none;
+    border-right: none;
+  }
+
+  .blog-content {
+    left: 15px;
+    right: 65px;
+    bottom: 20px;
+  }
+
+  .blog-title {
+    font-size: 22px;
+  }
+
+  .blog-description {
+    font-size: 13px;
+  }
+
+}
